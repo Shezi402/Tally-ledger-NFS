@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-ledger-paper text-ledger-ink font-body antialiased;
+    background-image: repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 35px,
+      rgba(30, 43, 34, 0.06) 36px
+    );
+  }
+
+  ::selection {
+    @apply bg-ledger-gold/40;
+  }
+}
+
+@layer utilities {
+  .skeleton {
+    @apply relative overflow-hidden bg-ledger-line/60 rounded-md;
+  }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    );
+    animation: shimmer 1.4s infinite;
+  }
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
